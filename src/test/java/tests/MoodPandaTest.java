@@ -5,19 +5,18 @@ import org.testng.annotations.Test;
 
 public class MoodPandaTest extends BaseTest {
 
-    @Test(invocationCount = 2)
+    @Test(invocationCount = 1)
     public void loginTest() {
         loginPage.openPage()
                 .login(EMAIL, PASSWORD)
-                .waitForPageOpen()
+                .waitForPageOpened()
                 .clickOnUpdateMoodButton()
-                .waitForPageOpen();
-        rateYourHappinessModal.updateMood(8, "HELLO!")
+                .waitForPageOpen()
+                .updateMood(8, "HELLO!")
                 .clickUpdateMoodToButton()
-                .waitForPageOpen();
-        moodUpdateModal.waitForPageOpen()
-                .clickDoneButton();
-        feedPage.waitForPageOpen();
+                .waitForPageOpened()
+                .clickDoneButton()
+                .waitForPageOpened();
         Assert.assertEquals(feedPage.getTextFromDescription(), "HELLO!");
         Assert.assertEquals(feedPage.getRate(), "8");
     }

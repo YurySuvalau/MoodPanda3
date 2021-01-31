@@ -7,14 +7,15 @@ import org.openqa.selenium.Keys;
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
 public class FeedPage {
     public final static String URL_FEED_PAGE = "https://moodpanda.com/Feed/";
     public final static String UPDATE_MOOD_BUTTON_CSS = "#LinkUpdate";
-    public final static String GET_RATING_HAPPINESS = "//*[contains(@class,'p7670318')and contains(@class,'m1')]//span[contains(@class,'badge')]";
-    public final static String GET_DESCRIPTION_TEXTAREA_TEXT = "//*[contains(@class,'p7670318 ')and contains(@class, 'm1')]//*[contains(@class,'MoodPostItem')]";
+    public final static String GET_RATING_HAPPINESS_XPATH = "//*[contains(@class,'m1')]//span[contains(@class,'badge')]";
+    public final static String GET_DESCRIPTION_TEXTAREA_TEXT_XPATH = "//*[contains(@class,'m1')]/../../..//*[contains(@class,'MoodPostItem')]";
 
-    public FeedPage waitForPageOpen() {
+    public FeedPage waitForPageOpened() {
         $(UPDATE_MOOD_BUTTON_CSS).shouldBe(Condition.visible, Duration.ofSeconds(10));
         return this;
     }
@@ -24,17 +25,18 @@ public class FeedPage {
         return new RateYourHappinessModal();
     }
 
-
     public String getTextFromDescription() {
-        return $(By.xpath(GET_DESCRIPTION_TEXTAREA_TEXT)).getText();
+        return $(By.xpath(GET_DESCRIPTION_TEXTAREA_TEXT_XPATH)).getText();
     }
 
     public String getRate() {
-        return $(By.xpath(GET_RATING_HAPPINESS)).getText();
+        return $(By.xpath(GET_RATING_HAPPINESS_XPATH)).getText();
     }
 
-    public FeedPage refreshPage() {
-        $(URL_FEED_PAGE).sendKeys(Keys.F5);
+    public FeedPage openPage() {
+        open(URL_FEED_PAGE);
+        waitForPageOpened();
         return this;
     }
 }
+

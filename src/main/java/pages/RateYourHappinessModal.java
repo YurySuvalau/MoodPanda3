@@ -34,7 +34,8 @@ public class RateYourHappinessModal {
         return new MoodUpdateModal();
     }
 
-    public void waitForPageOpen() {
+    public RateYourHappinessModal waitForPageOpen() {
         $(TEXT_AREA_CSS).shouldBe(Condition.visible, Duration.ofSeconds(10));
+        return this;
     }
 }

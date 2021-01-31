@@ -3,10 +3,7 @@ package tests;
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import pages.FeedPage;
-import pages.LoginPage;
-import pages.MoodUpdateModal;
-import pages.RateYourHappinessModal;
+import pages.*;
 
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 

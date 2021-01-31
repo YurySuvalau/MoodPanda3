@@ -23,11 +23,11 @@ public class LoginPage {
 
     public LoginPage openPage() {
         open(LOGIN_URL);
-        waitForPageOpen();
+        waitForPageOpened();
         return this;
     }
 
-    public LoginPage waitForPageOpen() {
+    public LoginPage waitForPageOpened() {
         $(GOOGLE_PLAY_ICON_CSS).shouldBe(Condition.visible, Duration.ofSeconds(10));
         return this;
     }

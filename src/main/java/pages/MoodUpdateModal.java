@@ -21,7 +21,7 @@ public class MoodUpdateModal {
         return new FeedPage();
     }
 
-    public MoodUpdateModal waitForPageOpen() {
+    public MoodUpdateModal waitForPageOpened() {
         $(By.xpath(DONE_BUTTON_XPATH)).shouldBe(Condition.visible, Duration.ofSeconds(10));
         return this;
     }
