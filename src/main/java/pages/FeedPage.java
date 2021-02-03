@@ -13,7 +13,7 @@ public class FeedPage {
     public final static String URL_FEED_PAGE = "https://moodpanda.com/Feed/";
     public final static String UPDATE_MOOD_BUTTON_CSS = "#LinkUpdate";
     public final static String GET_RATING_HAPPINESS_XPATH = "//*[contains(@class,'m1')]//span[contains(@class,'badge')]";
-    public final static String GET_DESCRIPTION_TEXTAREA_TEXT_XPATH = "//*[contains(@class,'m1')]/../../..//*[contains(@class,'MoodPostItem')]";
+    public final static String GET_DESCRIPTION_TEXTAREA_TEXT_XPATH = "//*[contains(@class,'MoodPostItem')]/ancestor::*[contains(@class, 'm1')]";
 
     public FeedPage waitForPageOpened() {
         $(UPDATE_MOOD_BUTTON_CSS).shouldBe(Condition.visible, Duration.ofSeconds(10));
