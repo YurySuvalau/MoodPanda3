@@ -1,22 +1,19 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Selenide.$;
 
+@Log4j2
 public class MoodUpdateModal {
-    public static final String MODAL_UPDATE_MOOD_LABEL_CSS = "[class='modal-title']";
     public static final String DONE_BUTTON_XPATH = "//button[contains(text(),'Done')]";
 
-    public MoodUpdateModal isModalLabelDisplayed() {
-        $(MODAL_UPDATE_MOOD_LABEL_CSS).getText();
-        return this;
-    }
-
     public FeedPage clickDoneButton() {
+        log.info("Click done button ");
         $(By.xpath(DONE_BUTTON_XPATH)).click();
         return new FeedPage();
     }
